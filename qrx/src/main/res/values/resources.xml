@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="QrXScanner">
+    </declare-styleable>
+    <integer name="qrx_analysis_list_buffer">3</integer>
+    <integer name="qrx_analysis_ui_refresh_delay">100</integer>
+</resources>

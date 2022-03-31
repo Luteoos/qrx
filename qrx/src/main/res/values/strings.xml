@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="qrx_permission_denied_info_text">Scan barcodes and QR codes with camera.</string>
+    <string name="qrx_permission_denied_button_text">Turn On</string>
+</resources>
