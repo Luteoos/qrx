@@ -1,4 +1,5 @@
 plugins {
+    `maven-publish`
     id("com.android.library")
     kotlin("android")
 }
@@ -8,9 +9,18 @@ apply(from = "../ktlint.gradle")
 android {
     compileSdk = 31
     buildToolsVersion = "30.0.3"
-    group = "io.github.luteoos"
+    namespace = "io.github.luteoos.qrx"
+
+    publishing{
+        singleVariant("debug"){
+            withSourcesJar()
+        }
+    }
 
     defaultConfig {
+        aarMetadata {
+            minCompileSdk = 30
+        }
         version = 1
         minSdk = 21
         targetSdk = 31
