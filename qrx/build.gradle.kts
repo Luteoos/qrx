@@ -13,7 +13,6 @@ android {
 
     publishing{
         singleVariant("debug"){
-            withSourcesJar()
         }
     }
 
@@ -57,6 +56,6 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:$cameraXVersion")
     // CameraX View class
     implementation("androidx.camera:camera-view:$cameraXVersion")
-    implementation("com.google.mlkit:barcode-scanning:17.0.2")
+    api("com.google.mlkit:barcode-scanning:17.0.2")
 }
 

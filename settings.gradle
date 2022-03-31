@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "QRX Scanner"
 include ':qrx'
+project(':qrx').name = 'qrx'
