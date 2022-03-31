@@ -2,11 +2,9 @@
 buildscript {
     repositories {
         google()
-        jcenter{
-            content {
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
+        mavenCentral()
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
+
     }
     dependencies {
         classpath ("com.android.tools.build:gradle:7.1.2")
@@ -25,7 +23,8 @@ plugins {
 allprojects {
     repositories {
         google()
-        jcenter()
         maven(url = uri("https://jitpack.io"))
+        mavenCentral()
+        maven { url = uri("https://dl.bintray.com/kotlin/kotlin-eap") }
     }
 }
