@@ -4,15 +4,22 @@ plugins {
     kotlin("android")
 }
 
+group = "com.github.luteoos"
+version = "1.0.1"
+val libVersion = version
+
 apply(from = "../ktlint.gradle")
 
 android {
     compileSdk = 31
     buildToolsVersion = "30.0.3"
-    namespace = "io.github.luteoos.qrx"
 
     publishing{
-        singleVariant("debug"){
+        singleVariant("release"){
+            withSourcesJar()
+        }
+        repositories{
+            mavenLocal()
         }
     }
 
@@ -20,7 +27,6 @@ android {
         aarMetadata {
             minCompileSdk = 30
         }
-        version = 1
         minSdk = 21
         targetSdk = 31
     }
@@ -36,11 +42,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 
     buildFeatures.dataBinding = true
@@ -59,3 +65,28 @@ dependencies {
     api("com.google.mlkit:barcode-scanning:17.0.2")
 }
 
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "$group"
+            artifactId = "qrx"
+            version = "$libVersion"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+            pom {
+                name.set("QRX")
+                developers {
+                    developer {
+                        id.set("Luteoos")
+                        name.set("Mateusz Lutecki")
+                        email.set("mateusz.lutecki.it@gmail.com")
+                        url.set("http://luteoos.github.io")
+                    }
+                }
+            }
+        }
+    }
+}
