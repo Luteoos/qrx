@@ -2,11 +2,8 @@
 buildscript {
     repositories {
         google()
-        jcenter{
-            content {
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
+        mavenCentral()
+
     }
     dependencies {
         classpath ("com.android.tools.build:gradle:7.1.2")
@@ -25,7 +22,7 @@ plugins {
 allprojects {
     repositories {
         google()
-        jcenter()
         maven(url = uri("https://jitpack.io"))
+        mavenCentral()
     }
 }

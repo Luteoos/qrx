@@ -1,18 +1,6 @@
-import org.gradle.api.initialization.resolve.RepositoriesMode
-
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-        mavenCentral()
-    }
-}
+rootProject.name = "qrx" //change this to break jitpack.io build
+include ':qrx'
+project(':qrx').name = 'qrx'
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
-    repositories {
-        google()
-        mavenCentral()
-    }
 }
-rootProject.name = "QRX Scanner"
-include ':qrx'
