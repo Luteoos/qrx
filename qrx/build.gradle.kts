@@ -4,9 +4,24 @@ plugins {
     kotlin("android")
 }
 
-group = "com.github.luteoos"
-version = "1.0.1"
-val libVersion = version
+/**
+ * Parameters taken from gradle.properties
+ *
+ * Before running `gradlew publishToMavenLocal` verify gradle.properties
+ */
+val VERSION_NAME: String by project
+val GROUP: String by project
+val ARTIFACT_ID: String by project
+val isRelease: String by project
+
+group = GROUP
+version = "$VERSION_NAME${
+    if(isRelease.toBoolean())
+        ""
+    else
+        "-SNAPSHOT"
+}"
+logger.info("qrx version=${project.version} group=${project.group} artifactId=$ARTIFACT_ID")
 
 apply(from = "../ktlint.gradle")
 
@@ -54,7 +69,7 @@ android {
 
 dependencies {
     val cameraXVersion = "1.1.0-beta02"
-    implementation(kotlin("stdlib", "1.5.31"))
+    implementation(kotlin("stdlib", "1.6.10"))
     implementation("androidx.core:core-ktx:1.7.0")
     // CameraX core library using camera2 implementation
     implementation("androidx.camera:camera-camera2:$cameraXVersion")
@@ -69,15 +84,20 @@ dependencies {
 publishing {
     publications {
         register<MavenPublication>("release") {
-            groupId = "$group"
+            groupId = GROUP
             artifactId = "qrx"
-            version = "$libVersion"
 
             afterEvaluate {
                 from(components["release"])
             }
             pom {
                 name.set("QRX")
+                licenses {
+                    license {
+                        name.set("MIT License")
+                        url.set("http://www.opensource.org/licenses/mit-license.php")
+                    }
+                }
                 developers {
                     developer {
                         id.set("Luteoos")
