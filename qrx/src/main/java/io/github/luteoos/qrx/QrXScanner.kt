@@ -196,17 +196,17 @@ class QrXScanner : FrameLayout {
      *
      * [onBarcodeClickListener] is invoked when user click on code barcode/QR
      *
-     * [onPermissionRetryButton] is invoked when user click on *Turn On* button on permission denied screen
+     * [onPermissionRetryListener] is invoked when user click on *Turn On* button on permission denied screen
      */
     @SuppressLint("ClickableViewAccessibility")
     fun initialize(
         lifecycleOwner: LifecycleOwner,
         onBarcodeClickListener: (Barcode) -> Unit,
-        onPermissionRetryButton: () -> Unit
+        onPermissionRetryListener: () -> Unit
     ) {
         this.onBarcodeClickListener = onBarcodeClickListener
         this.lifecycleOwner = lifecycleOwner
-        permissionDeniedButton.setOnClickListener { onPermissionRetryButton.invoke() }
+        permissionDeniedButton.setOnClickListener { onPermissionRetryListener.invoke() }
         lifecycleOwner.lifecycle.coroutineScope.launch {
             lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
