@@ -4,6 +4,12 @@ This library allows you to easily add CameraX Preview with attached ML Kit to de
 
 [![](https://jitpack.io/v/Luteoos/qrx.svg)](https://jitpack.io/#Luteoos/qrx) 
 
+<p align="middle">
+<img src="readme-files/qrx_permission_denied.png" width="270" height="480"/>
+<img src="readme-files/qrx_single_target.png" width="270" height="480"/>
+<img src="readme-files/qrx_multiple_targets.png" width="270" height="480"/>
+</p>
+
 # Binaries
 
 ```kotlin
